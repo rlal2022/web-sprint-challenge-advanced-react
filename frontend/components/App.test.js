@@ -19,7 +19,7 @@ test("renders AppClass without errors", () => {
 });
 
 test("renders the header text welcome to the GRID correctly"),
-  () => {
+  (test) => {
     render(<AppFunctional />);
     render(<AppClass />);
     const header = screen.getByText("Welcome to the GRID");
