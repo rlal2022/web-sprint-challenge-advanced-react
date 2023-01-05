@@ -91,7 +91,7 @@ export default function AppFunctional(props) {
     ) {
       return {
         ...forState,
-        index: forState.index - 1,
+        index: forState.index + 1,
         steps: forState.steps + 1,
       };
     }
