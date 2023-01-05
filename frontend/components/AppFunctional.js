@@ -13,7 +13,7 @@ const coordinates = [
   [3, 1],
   [1, 2],
   [2, 2],
-  [3, 3],
+  [3, 2],
   [1, 3],
   [2, 3],
   [3, 3],
@@ -91,7 +91,7 @@ export default function AppFunctional(props) {
     ) {
       return {
         ...forState,
-        index: forState.index + 1,
+        index: forState.index - 1,
         steps: forState.steps + 1,
       };
     }
