@@ -1,12 +1,13 @@
 import React from "react";
+import axios from "axios";
 
 // Suggested initial states
 const initialMessage = "";
 const initialEmail = "";
 const initialSteps = 0;
 const initialIndex = 4; // the index the "B" is at
-const initialX = 0;
-const initialY = 0;
+const initialX = 2;
+const initialY = 2;
 
 const initialState = {
   message: initialMessage,
@@ -22,7 +23,7 @@ export default class AppClass extends React.Component {
   // You can delete them and build your own logic from scratch.
   constructor() {
     super();
-    this.state = initialState;
+    this.state = { ...initialState };
   }
 
   getXY = () => {
@@ -39,7 +40,7 @@ export default class AppClass extends React.Component {
   };
 
   reset = () => {
-    this.setState = initialState;
+    this.setState({ ...initialState });
     // Use this helper to reset all states to their initial values.
   };
 
