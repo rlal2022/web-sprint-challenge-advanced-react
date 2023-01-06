@@ -40,6 +40,7 @@ export default function AppFunctional(props) {
 
   function getXYMessage() {
     const coordinatesValue = getXY();
+    // console.log(coordinatesValue);
     return `${coordinatesValue[0]}, ${coordinatesValue[1]}`;
 
     // It it not necessary to have a state to track the "Coordinates (2, 2)" message for the user.
@@ -135,10 +136,12 @@ export default function AppFunctional(props) {
       .post("http://localhost:9000/api/result", post)
       .then((res) => {
         // console.log(res);
-        setState({ ...forState, message: res.data.message });
+
+        setState({ ...forState, message: res.data.message, email: "" });
       })
       .catch((err) => {
-        setState(err.res);
+        // console.log(err.response.data.message);
+        setState({ ...forState, message: err.response.data.message });
       });
   }
 
@@ -167,7 +170,7 @@ export default function AppFunctional(props) {
         <button id="left" onClick={move}>
           LEFT
         </button>
-        <button id="up" onClick={move}>
+        <button data-testid="up" id="up" onClick={move}>
           UP
         </button>
         <button id="right" onClick={move}>

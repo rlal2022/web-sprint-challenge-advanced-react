@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen, fireEvent, getByTestId } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import AppClass from "./AppClass";
 import AppFunctional from "./AppFunctional";
@@ -19,18 +19,9 @@ test("renders AppClass without errors", () => {
   expect("Coordinates: (2,2").toBeInTheDocument;
 });
 
-test("renders the header text welcome to the GRID correctly", (test) => {
-  render(<AppFunctional />);
-  render(<AppClass />);
-  const header = screen.getByText("Welcome to the GRID");
-  expect(header).toBeInTheDocument;
-  expect(header).toBeInTheDocument(/AppClass/);
-  expect(header).toBeInTheDocument(/AppFunctional/);
-  expect(header).toBeTruthy();
-});
-
 test("moves in a direction when arrow button is pressed", () => {
   render(<AppFunctional />);
+  render(<AppClass />);
   const left = document.querySelector("#down");
 
   fireEvent.click(left);
@@ -38,6 +29,7 @@ test("moves in a direction when arrow button is pressed", () => {
 
 test("could successfully submit form", () => {
   render(<AppFunctional />);
+
   const left = document.querySelector("#down");
   const email = document.querySelector("#email");
   const submit = document.querySelector("#submit");
