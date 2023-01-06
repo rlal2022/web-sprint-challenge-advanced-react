@@ -6,8 +6,6 @@ const initialMessage = "";
 const initialEmail = "";
 const initialSteps = 0;
 const initialIndex = 4; // the index the "B" is at
-const initialX = 2;
-const initialY = 2;
 
 const initialState = {
   message: initialMessage,
@@ -134,9 +132,14 @@ export default class AppClass extends React.Component {
       steps: steps,
       email: email,
     };
+
     axios
       .post("http://localhost:9000/api/result", post)
-      .then((res) => this.setState({ message: res.data.message }))
+      .then((res) =>
+        this.setState({
+          message: res.data.message,
+        })
+      )
       .catch((error) => {
         console.error(error);
         this.setState({

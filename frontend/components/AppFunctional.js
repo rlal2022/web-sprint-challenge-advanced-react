@@ -112,36 +112,34 @@ export default function AppFunctional(props) {
   function onSubmit(evt) {
     // Use a POST request to send a payload to the server.
     evt.preventDefault();
-    //  x = getXY()[0];
-    //  y = getXY()[1];
-    //  steps = forState.steps;
-    //  email = forState.email;
 
-    const post = { x: getXY()[0], y: getXY()[1], steps: steps, email: email };
+    const post = {
+      x: getXY()[0],
+      y: getXY()[1],
+      steps: forState.steps,
+      email: forState.email,
+    };
+
+    // axios
+    //   .post("http://localhost:9000/api/result", post)
+    //   .then((res) => {
+    //     setState(res.data.message);
+    //     console.log(message);
+    //   })
+    //   .catch((err) => {
+    //     setState(err.res.data.message);
+    //   });
+    // }
 
     axios
       .post("http://localhost:9000/api/result", post)
       .then((res) => {
-        setState({ ...this.forState, message: res.data.message });
+        // console.log(res);
+        setState({ ...forState, message: res.data.message });
       })
-      .catch((err) => setState({ ...forState, message: err.res.data.message }));
-
-    // const coordinatesValue = getXY();
-    // axios
-    //   .post("http://localhost:9000/api/result", {
-    //     x: coordinatesValue[0],
-    //     y: coordinatesValue[1],
-    //     email: forState.email,
-    //     steps: forState.steps,
-    //   })
-    //   .then((res) =>
-    //     setState({
-    //       ...forState,
-    //       email: initialEmail,
-    //       message: res.data.message,
-    //     })
-    //   )
-    //   .catch((err) => setState({ ...forState, message: err.res.data.message }));
+      .catch((err) => {
+        setState(err.res);
+      });
   }
 
   return (
